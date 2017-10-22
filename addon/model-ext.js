@@ -54,7 +54,7 @@ Model.reopen({
     let rollbackData = Tracker.rollbackData(this, trackerInfo);
     let normalized = Tracker.normalize(this, rollbackData);
     Object.keys(trackerInfo).forEach(key => {
-      if (trackerInfo[key].type === 'hasMany' && normalized.data.relationships[key]) {
+      if (trackerInfo[key].type === 'hasMany' && normalized.data.relationships[key] && normalized.data.relationships[key].data) {
         normalized.data.relationships[key].data = normalized.data.relationships[key].data.compact();
       }
     });
